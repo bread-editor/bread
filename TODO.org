@@ -1,0 +1,7 @@
+* Design Goals
+1. Decouple back-end from front-end
+2. Be completely customizable (akin to Emacs) via Haskell
+3. Modern GUI which works predictably across platforms
+3. Easily configured
+4. Ergonomic
+5. Fun

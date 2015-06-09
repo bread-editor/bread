@@ -1,0 +1,3 @@
+* Bread
+  Bread is an extensible text-editor written in Haskell. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
+
