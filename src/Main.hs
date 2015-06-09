@@ -1,5 +1,7 @@
-import Data.Set
+import Test.Hspec
+import Test.QuickCheck
+import Control.Exception (evaluate)
 
 main :: IO ()
-main = do
-  putStrLn "Hello, Bread!"
+main  = hspec $ do
+  
