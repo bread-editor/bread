@@ -53,6 +53,7 @@ library
   -- Modules exported by the library.
   exposed-modules:     Bread.Core.Files
                      , Bread.Core.Editing.TextObjects
+                     , Bread.Core.Editing.Operations
   
   -- Modules included in this library but not exported.
   -- other-modules:       
