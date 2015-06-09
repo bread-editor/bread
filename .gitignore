@@ -1,4 +1,2 @@
-dist/build/*
-dist/hpc/*
 dist/*
 !dist/doc/*
