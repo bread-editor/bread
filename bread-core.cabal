@@ -51,7 +51,8 @@ cabal-version:       >=1.10
 
 library
   -- Modules exported by the library.
-  exposed-modules:     Main, Bread.Core.Files
+  exposed-modules:     Bread.Core.Files
+                     , Bread.Core.Editing.TextObjects
   
   -- Modules included in this library but not exported.
   -- other-modules:       
@@ -67,4 +68,16 @@ library
   
   -- Base language which the package is written in.
   default-language:    Haskell2010
+
+test-suite spec
+  type:            exitcode-stdio-1.0
+  hs-source-dirs:  test
+  main-is:         Spec.hs
+  build-depends:   base        == 4.*
+                 , bread-core
+                 , hspec       == 2.*
+                 , containers  == 0.5.*
+  default-language:    Haskell2010
+              
+       
   
