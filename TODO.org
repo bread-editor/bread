@@ -1,7 +1,14 @@
 * Design Goals
-1. Decouple back-end from front-end
-2. Be completely customizable (akin to Emacs) via Haskell
-3. Modern GUI which works predictably across platforms
-3. Easily configured
-4. Ergonomic
-5. Fun
+** General
+   - Code should be clean, readable, and well-documented
+   - Working with Bread should be enjoyable; the editor should not fight you
+** Editing
+   - Include useful functions for editing
+   - Make the default editing bindings sensical and ergonomic
+** Back End
+   - The back-end should be efficient and well-documented
+   - Include functions that are useful to developers of plugins by default
+** GUI
+   - Allow for images, multiple fonts, and anything else to be displayed
+   - Be consistent across platforms
+   - Extensible enough to have a plugin change it completely
