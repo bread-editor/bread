@@ -12,3 +12,8 @@
    - Allow for images, multiple fonts, and anything else to be displayed
    - Be consistent across platforms
    - Extensible enough to have a plugin change it completely
+* Tasks
+  - [ ] Implement the server
+  - [ ] Get basic text-editing functions working
+  - [ ] Implement a basic GUI (maybe terminal based)
+  - [ ] Make functions that take ranges, positions, or anything like that safe if the range or position is out of bounds

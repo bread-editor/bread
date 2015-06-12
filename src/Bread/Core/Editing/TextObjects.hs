@@ -21,7 +21,7 @@ import Bread.Core.Files as B
 -- | Just a 'Prelude.Char'
 type Char      = Prelude.Char
 -- | 'Pos' is a position referring to the position of a character
--- in a 'FileContents' sequence.
+-- in a 'Buffer' sequence.
 type Pos       = Int
 -- | 'Range' describes a range of characters between two 'Pos's
 type Range     = (Pos, Pos)
@@ -35,12 +35,12 @@ type Word      = Range
 -- | 'Sentence' is a 'Range' of characters until the the regex "[\.\?\!] " is matched.
 type Sentence  = Range
 
--- | 'getChars' takes a 'Range' and a 'FileContents' and returns the characters in
+-- | 'getChars' takes a 'Range' and a 'Buffer' and returns the characters in
 -- the range (inclusive) as a 'String'
-getChars :: Range -> B.FileContents -> String
+getChars :: Range -> B.Buffer -> String
 getChars (start, end) contents = toList $ S.take end $ S.drop start contents
 
--- | 'getCharSeq' takes a 'Range' and a 'FileContents' and returns the characters in
+-- | 'getCharSeq' takes a 'Range' and a 'Buffer' and returns the characters in
 -- the range (inclusive) as a 'Seq Char'
-getCharSeq :: Range -> B.FileContents -> Seq Bread.Core.Editing.TextObjects.Char
+getCharSeq :: Range -> B.Buffer -> Seq Bread.Core.Editing.TextObjects.Char
 getCharSeq (start, end) contents = S.take end $ S.drop start contents

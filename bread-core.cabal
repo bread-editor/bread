@@ -52,6 +52,7 @@ cabal-version:       >=1.10
 library
   -- Modules exported by the library.
   exposed-modules:     Bread.Core.Files
+                     , Bread.Core.Boards
                      , Bread.Core.Editing.TextObjects
                      , Bread.Core.Editing.Operations
   
