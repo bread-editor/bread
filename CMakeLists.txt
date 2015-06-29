@@ -1,5 +1,5 @@
 # Boilerplate CMake things
-cmake_minimum_required (VERSION 3.2.3)
+cmake_minimum_required (VERSION 3.0.0)
 project (bread)
 
 # Set up version variables user Semantic Versioning
