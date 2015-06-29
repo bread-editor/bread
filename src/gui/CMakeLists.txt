@@ -1,5 +1,5 @@
 # Include qt
-find_package (Qt5Widgets)
+find_package (Qt5Widgets REQUIRED)
 
 # qtbread executable compilation 
 file (GLOB srcfiles *.cc)
