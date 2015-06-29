@@ -1,5 +1,4 @@
 * Bread
-  Bread is an extensible text-editor written in Elixir. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
+  Bread is an extensible text-editor. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
 
 ** How does Bread work?
-   Bread uses [[https://github.com/bread-editor/butter][Butter]] to display it's GUI, which allows us the flexibility to run Bread on a remote machine and connect to it using ANY browser. There are currently plans to develop a standalone, which will essentially be a light webkit instance that connects to the Bread server.
