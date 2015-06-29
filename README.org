@@ -1,3 +1,4 @@
+[[https://travis-ci.org/bread-editor/bread.svg]]
 * Bread
   Bread is an extensible text-editor. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
 
