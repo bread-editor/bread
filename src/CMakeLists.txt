@@ -1,14 +1,10 @@
-# Options
-option (enable_tests "Enable unit tests"    off)
-option (use_logging  "Enable debug logging" off)
+# Set Bread version using Semantic Versioning
+set (bread_version_major 0)
+set (bread_version_minor 1)
+set (bread_version_patch 0)
+set (bread_version ${bread_version_major}.${bread_version_minor}.${bread_version_patch})
 
-# Set binary output dir
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-# Compiler flags
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -Wall")
-
-# Subdirs
-add_subdirectory (gui)
-add_subdirectory (srv)
-
+# Bread executable
+file (GLOB srcfiles *.cc)
+file (GLOB _srcfiles */*.cc)
+add_executable (bread ${srcfiles} ${_srcfiles})
