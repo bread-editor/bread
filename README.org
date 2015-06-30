@@ -1,5 +1,24 @@
-[[https://travis-ci.org/bread-editor/bread.svg]]
 * Bread
   Bread is an extensible text-editor. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
 
-** How does Bread work?
+** Baking Bread
+   To build Bread, you need the following dependencies:
+   - MessagePack
+   - Asio
+
+   To build Rye, you need the following dependencies:
+   - Qt5
+
+   To build the Bread tests, you need the following dependencies:
+   - GTest
+   
+   To build the whole repo, do the following:
+#+BEGIN_SRC sh
+  git clone https://github.com/bread-editor/bread
+  cd bread
+  mkdir build
+  cd build
+  cmake .. -G "Ninja" # Note: Ninja can be swapped with any other build system you'd like, but I personally use Ninja
+#+END_SRC
+   
+   This will result in Bread, Rye, and the Bread tests being built in build/bin.
