@@ -1,7 +1,7 @@
 -- | This module describes the way Bread interprets files. It also includes any built-in functions related to file operations.
-module Bread.Core.Files
+module Bread.Files
        ( Buffer
-       , Bread.Core.Files.readFile ) where
+       , Bread.Files.readFile ) where
 
 import qualified Data.Sequence as S
 import System.IO

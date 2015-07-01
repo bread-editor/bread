@@ -2,13 +2,13 @@
 -- A text object can be thought of as a collection of characters. For example,
 -- "sandwich" is a text object of type 'Word'.
 -- 
-module Bread.Core.Editing.TextObjects
-       ( Bread.Core.Editing.TextObjects.Char
+module Bread.Editing.TextObjects
+       ( Bread.Editing.TextObjects.Char
        , Pos
        , Range
        , Line
        , Paragraph
-       , Bread.Core.Editing.TextObjects.Word
+       , Bread.Editing.TextObjects.Word
        , Sentence
        , getChars
        , getCharSeq
@@ -16,7 +16,7 @@ module Bread.Core.Editing.TextObjects
 
 import Data.Sequence as S
 import Data.Foldable (toList)
-import Bread.Core.Files as B
+import Bread.Files as B
 
 -- | Just a 'Prelude.Char'
 type Char      = Prelude.Char
@@ -42,5 +42,5 @@ getChars (start, end) contents = toList $ S.take end $ S.drop start contents
 
 -- | 'getCharSeq' takes a 'Range' and a 'Buffer' and returns the characters in
 -- the range (inclusive) as a 'Seq Char'
-getCharSeq :: Range -> B.Buffer -> Seq Bread.Core.Editing.TextObjects.Char
+getCharSeq :: Range -> B.Buffer -> Seq Bread.Editing.TextObjects.Char
 getCharSeq (start, end) contents = S.take end $ S.drop start contents

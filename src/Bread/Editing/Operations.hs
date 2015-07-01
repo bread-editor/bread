@@ -1,6 +1,6 @@
 -- | This module is for all of the built-in editing operations
 -- one can perform on a file.
-module Bread.Core.Editing.Operations
+module Bread.Editing.Operations
        ( insert
        , insertString
        , delete
@@ -10,9 +10,9 @@ module Bread.Core.Editing.Operations
        , cut
        , cutRange) where
 
-import Bread.Core.Files as B
-import Bread.Core.Editing.TextObjects as O
-import Bread.Core.Boards
+import Bread.Files as B
+import Bread.Editing.TextObjects as O
+import Bread.Boards
 import Data.Sequence as S
 
 -- | 'insert' inserts a 'O.Char' at 'O.Pos' in a 'B.Buffer'

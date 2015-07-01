@@ -1,17 +1,7 @@
 * Bread
   Bread is an extensible text-editor written in Haskell. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
 
-** Cool! Why should I use it?
-   At this point, Bread really isn't usable. We're working on getting it to a useable state, but for right now, it is HEAVILY in development. We would personally wait on writing plugins, leaving behind your wife, etc until the spec is stable and in a working condition.
+** What is Bread?
+   Bread is a text-editor being written in Haskell. Essentially, Bread acts as a "server", handling requests over TCP from plugins and UIs. You can find out more about Bread [[https://bread-editor.github.io][on the homepage]].
 
-** How can I get involved?
-   Submit a bug report or a pull request! We don't bite.
-
-** What is this repository?
-   This is the repository that contains the bread-core files. As in, this is the repository that contains (almost) everything that makes the Bread back-end work. It also contains tests that ensure everything should be working!
-
-*** Is this repository relevant to me?
-    Maybe! If you want to write plugins, contribute to the development of Bread, or follow the progress of the Bread editor, then yes, this repository is relevant. However, if you are just an end user, then this repository isn't really for you.
-
-** Where's the GUI?
-   Right now, we don't have a GUI available. If you'd like to contribute development to a GUI, please take a look at one of the GUI repos.
+** Baking Bread
