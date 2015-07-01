@@ -8,3 +8,6 @@ set (bread_version ${bread_version_major}.${bread_version_minor}.${bread_version
 file (GLOB srcfiles *.cc)
 file (GLOB _srcfiles */*.cc)
 add_executable (bread ${srcfiles} ${_srcfiles})
+
+# Include headers from this folder
+include_directories (./)

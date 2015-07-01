@@ -39,7 +39,9 @@ public:
   
   bool read();
   bool write();
+
   
+
 private:
   std::string filename;
   std::fstream file;
