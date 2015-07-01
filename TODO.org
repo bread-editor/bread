@@ -1,0 +1,19 @@
+* Design Goals
+** General
+   - Code should be clean, readable, and well-documented
+   - Working with Bread should be enjoyable; the editor should not fight you
+** Editing
+   - Include useful functions for editing
+   - Make the default editing bindings sensical and ergonomic
+** Back End
+   - The back-end should be efficient and well-documented
+   - Include functions that are useful to developers of plugins by default
+** GUI
+   - Allow for images, multiple fonts, and anything else to be displayed
+   - Be consistent across platforms
+   - Extensible enough to have a plugin change it completely
+* Tasks
+  - [ ] Implement the server
+  - [ ] Get basic text-editing functions working
+  - [ ] Implement a basic GUI (maybe terminal based)
+  - [ ] Make functions that take ranges, positions, or anything like that safe if the range or position is out of bounds
