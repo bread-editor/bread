@@ -1,8 +1,8 @@
-module Bread.Core.Editing.OperationsSpec (main, spec) where
+module Bread.Editing.OperationsSpec (main, spec) where
 
 import Test.Hspec
 import Data.Sequence as S
-import Bread.Core.Editing.Operations as Ops
+import Bread.Editing.Operations as Ops
 
 main = hspec spec
 

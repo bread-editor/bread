@@ -1,7 +1,7 @@
-module Bread.Core.Editing.TextObjectsSpec (main, spec) where
+module Bread.Editing.TextObjectsSpec (main, spec) where
 
 import Test.Hspec
-import Bread.Core.Editing.TextObjects
+import Bread.Editing.TextObjects
 import Data.Sequence as S
 
 main :: IO ()

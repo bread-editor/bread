@@ -1,6 +1,6 @@
-module Bread.Core.FilesSpec (main, spec) where
+module Bread.FilesSpec (main, spec) where
 import Test.Hspec
-import qualified Bread.Core.Files as B
+import qualified Bread.Files as B
 import qualified Data.Sequence as S
 
 main :: IO ()
