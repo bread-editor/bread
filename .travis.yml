@@ -21,7 +21,7 @@ before_install:
   - cabal install --only-dependencies --enable-tests --enable-benchmarks
 
 script:
-  - cabal configure --enable-tests --enable-benchmarks -v2 --dependencies-only
+  - cabal configure --enable-tests --enable-benchmarks -v2 
   - cabal install stack
   - stack build
   - stack test
