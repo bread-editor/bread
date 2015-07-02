@@ -4,7 +4,6 @@ machine:
 
 dependencies:
   post:
-    - cabal install hpc-coveralls --force-reinstalls
     - cabal configure --enable-tests --enable-benchmarks -v2 --enable-coverage
 
 test:
@@ -13,4 +12,3 @@ test:
     - cp ./dist/build/bread/bread $CIRCLE_ARTIFACTS/
     - cp ./dist/build/libHSbread-* $CIRCLE_ARTIFACTS/
     - zip -r $CIRCLE_ARTIFACTS/bread-doc.zip ./dist/doc/html/bread
-    - ./.cabal-sandbox/bin/hpc-coveralls spec --repo-token swE22ivF927wD0BNXIyMAmLICPMiHFCvI
