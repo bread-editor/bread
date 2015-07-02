@@ -5,8 +5,9 @@ machine:
 test:
   post:
     - cabal haddock
-    - cp ./dist/bread/bread $CIRCLE_ARTIFACTS/
-    - zip ./dist/doc/html/* $CIRCLE_ARTIFACTS/bread-doc.zip
+    - cp ./dist/build/bread/bread $CIRCLE_ARTIFACTS/
+    - cp ./dist/build/libHSbread-* $CIRCLE_ARTIFACTS/
+    - zip -r $CIRCLE_ARTIFACTS/bread-doc.zip ./dist/doc/html/bread
 
 general:
   artifacts:
