@@ -1,7 +1,0 @@
-machine:
-  ghc:
-    version: 7.10.1
-
-test:
-  override:
-    - cabal test
