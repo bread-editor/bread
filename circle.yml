@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   post:
-    - cabal install hpc-coveralls
+    - cabal install hpc-coveralls --force-reinstalls
     - cabal configure --enable-tests --enable-benchmarks -v2 --enable-coverage
 
 test:
