@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/bread-editor/bread.svg?style=svg)](https://circleci.com/gh/bread-editor/bread) [![Build Status](https://travis-ci.org/bread-editor/bread.svg?branch=master)](https://travis-ci.org/bread-editor/bread)
+[![Circle CI](https://circleci.com/gh/bread-editor/bread.svg?style=svg)](https://circleci.com/gh/bread-editor/bread) [![Build Status](https://travis-ci.org/bread-editor/bread.svg?branch=master)](https://travis-ci.org/bread-editor/bread) [![Build Status](https://drone.io/github.com/bread-editor/bread/status.png)](https://drone.io/github.com/bread-editor/bread/latest)
 
 Bread
 ======
