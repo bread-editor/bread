@@ -13,4 +13,4 @@ test:
     - cp ./dist/build/bread/bread $CIRCLE_ARTIFACTS/
     - cp ./dist/build/libHSbread-* $CIRCLE_ARTIFACTS/
     - zip -r $CIRCLE_ARTIFACTS/bread-doc.zip ./dist/doc/html/bread
-    - hpc-coveralls spec --repo-token swE22ivF927wD0BNXIyMAmLICPMiHFCvI
+    - ./.cabal-sandbox/bin/hpc-coveralls spec --repo-token swE22ivF927wD0BNXIyMAmLICPMiHFCvI
