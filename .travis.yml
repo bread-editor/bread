@@ -1,5 +1,9 @@
-language: cpp
-compiler: clang
+language: haskell
+compiler: ghc
+
+ghc:
+  - 7.10
+  - 7.8
 
 branches:
   only:
@@ -7,17 +11,10 @@ branches:
     - release
     - dev
 
-before_install:
-  # Cmake is outdated, so add trusty
-  - sudo add-apt-repository --yes "deb http://us.archive.ubuntu.com/ubuntu/ trusty main universe"
-  - sudo apt-add-repository --yes ppa:ubuntu-sdk-team/ppa
-  - sudo apt-get update -qq
-  - sudo apt-get upgrade
-  - sudo apt-get dist-upgrade -qq
-  - sudo apt-get install -qq qtbase5-dev libgtest-dev ninja cmake clang gcc g++
-  
 script:
-  - mkdir build
-  - cd build
-  - cmake .. -G "Ninja"
-  - ninja -j4
+  - cabal install --enable-tests --dependencies-only
+  - cabal install stack
+  - stack build
+  - stack test
+  - cabal build
+  - cabal test
