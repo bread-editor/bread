@@ -8,5 +8,6 @@ test:
 
 general:
   artifacts:
-    - "dist/build"
+    - "dist/build/bread"
+    - "dist/build/libHSbread-*"
     - "dist/doc/html"
