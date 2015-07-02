@@ -2,12 +2,15 @@ machine:
   ghc:
     version: 7.10.1
 
+dependencies:
+  post:
+    - cabal install hpc-coveralls
+    - cabal configure --enable-tests --enable-benchmarks -v2 --enable-coverage
+
 test:
   post:
     - cabal haddock
     - cp ./dist/build/bread/bread $CIRCLE_ARTIFACTS/
     - cp ./dist/build/libHSbread-* $CIRCLE_ARTIFACTS/
     - zip -r $CIRCLE_ARTIFACTS/bread-doc.zip ./dist/doc/html/bread
-
-general:
-  artifacts:
+    - hpc-coveralls spec --repo-token swE22ivF927wD0BNXIyMAmLICPMiHFCvI
