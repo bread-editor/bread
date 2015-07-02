@@ -16,7 +16,7 @@ module Bread.Editing.TextObjects
 
 import Data.Sequence as S
 import Data.Foldable (toList)
-import Bread.Files as B
+import Bread.Data.Files as B
 
 -- | Just a 'Prelude.Char'
 type Char      = Prelude.Char

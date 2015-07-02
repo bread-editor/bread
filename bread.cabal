@@ -44,6 +44,7 @@ build-type:          Simple
 -- Extra files to be distributed with the package, such as examples or a 
 -- README.
 extra-source-files:  README.org
+                   , LICENSE
                      
 -- Constraint on the version of Cabal needed to build this package.
 cabal-version:       >=1.10
@@ -51,8 +52,8 @@ cabal-version:       >=1.10
 
 library
   -- Modules exported by the library.
-  exposed-modules:     Bread.Files
-                     , Bread.Boards
+  exposed-modules:     Bread.Data.Files
+                     , Bread.Data.Boards
                      , Bread.Editing.TextObjects
                      , Bread.Editing.Operations
   

@@ -10,9 +10,9 @@ module Bread.Editing.Operations
        , cut
        , cutRange) where
 
-import Bread.Files as B
+import Bread.Data.Files as B
 import Bread.Editing.TextObjects as O
-import Bread.Boards
+import Bread.Data.Boards
 import Data.Sequence as S
 
 -- | 'insert' inserts a 'O.Char' at 'O.Pos' in a 'B.Buffer'

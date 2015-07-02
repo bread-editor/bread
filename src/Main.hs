@@ -1,13 +1,27 @@
 import System.IO
+import Control.Concurrent
 import Network
 
 main = withSocketsDo $ do
   socket <- listenOn $ PortNumber 9090
-  (handle, hostname, port) <- accept socket
-  hPutStr handle msg
-  hFlush  handle
-  hClose  handle
+  loop socket
 
-msg = "HTTP/1.1 200 OK\nServer: Bread/0.0.1.0\nContent-Type: text/plain\n\nHello\n"
+loop socket = do
+  (h, _, _) <- accept socket
+  forkIO $ body h
+  loop socket
 
-
+body handle = do
+  hSetBuffering handle LineBuffering
+  putStrLn "Server: Got a connection!"
+  putStrLn "Server: Getting contents from client..."
+  loop
+  where loop = do
+          contents <- hGetLine handle
+          if contents /= "stop"
+            then do putStrLn $ "Server: Got something! Here's what we got: " ++ contents
+                    putStrLn "Server: Sending information back..."
+                    hPutStrLn handle $ reverse contents
+                    loop
+            else do hFlush handle
+                    hClose handle

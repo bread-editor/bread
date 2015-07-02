@@ -1,6 +1,6 @@
 -- | This module defines a type 'Board' which is used to
 -- represent clipboards in Bread
-module Bread.Boards ( Board ) where
+module Bread.Data.Boards ( Board ) where
 
 import Data.Sequence
 
