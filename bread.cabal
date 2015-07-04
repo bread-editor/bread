@@ -23,6 +23,7 @@ library
                      , Bread.Editing.Operations
   
   build-depends:       base == 4.8.*
+                     , text
                      , containers
                      , hspec
                      , network
@@ -50,6 +51,7 @@ test-suite spec
   hs-source-dirs:  test
   main-is:         Spec.hs
   build-depends:   base == 4.8.*
+                 , text
                  , bread
                  , hspec
                  , containers

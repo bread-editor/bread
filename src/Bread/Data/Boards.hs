@@ -2,7 +2,7 @@
 -- represent clipboards in Bread
 module Bread.Data.Boards ( Board ) where
 
-import Data.Sequence
+import Data.Text
 
 -- | 'Board' is the clipboard type used in Bread
-type Board = Seq Char
+type Board = Text

@@ -14,7 +14,7 @@ module Bread.Editing.TextObjects
        , getCharSeq
        ) where
 
-import Data.Sequence as S
+import Data.Text as T
 import Data.Foldable (toList)
 import Bread.Data.Files as B
 
@@ -35,12 +35,12 @@ type Word      = Range
 -- | 'Sentence' is a 'Range' of characters until the the regex "[\.\?\!] " is matched.
 type Sentence  = Range
 
--- | 'getChars' takes a 'Range' and a 'Buffer' and returns the characters in
+-- | 'getChars' takes a 'Range' and a 'Text' and returns the characters in
 -- the range (inclusive) as a 'String'
-getChars :: Range -> B.Buffer -> String
-getChars (start, end) contents = toList $ S.take end $ S.drop start contents
+getChars :: Range -> Text -> String
+getChars (start, end) string = T.unpack $ T.take end $ T.drop start string
 
--- | 'getCharSeq' takes a 'Range' and a 'Buffer' and returns the characters in
--- the range (inclusive) as a 'Seq Char'
-getCharSeq :: Range -> B.Buffer -> Seq Bread.Editing.TextObjects.Char
-getCharSeq (start, end) contents = S.take end $ S.drop start contents
+-- | 'getCharSeq' takes a 'Range' and a 'Text' and returns the characters in
+-- the range (inclusive) as a 'Text'
+getCharSeq :: Range -> Text -> Text
+getCharSeq (start, end) string = T.take end $ T.drop start string

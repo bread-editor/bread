@@ -5,7 +5,7 @@ module Bread.Editing.Operations
        , insertString
        , delete
        , deleteRange
-       , copy
+       , Bread.Editing.Operations.copy
        , copyRange
        , cut
        , cutRange) where
@@ -13,50 +13,50 @@ module Bread.Editing.Operations
 import Bread.Data.Files as B
 import Bread.Editing.TextObjects as O
 import Bread.Data.Boards
-import Data.Sequence as S
+import Data.Text as T
 
--- | 'insert' inserts a 'O.Char' at 'O.Pos' in a 'B.Buffer'
--- and returns the modified 'B.Buffer'
-insert :: O.Char -> O.Pos -> B.Buffer -> B.Buffer
-insert char pos buf = let (before, after) = S.splitAt pos buf
-                           in  before >< (char <| after)
+-- | 'insert' inserts a 'O.Char' at 'O.Pos' in a 'Text'
+-- and returns a 'Text'
+insert :: O.Char -> O.Pos -> Text -> Text
+insert char pos buf = let (before, after) = T.splitAt pos buf
+                           in  before `append` (singleton char `append` after)
 
--- | 'insertString' inserts a 'String' at 'O.Pos' in a
--- 'B.Buffer' and returns the modified 'B.Buffer'
-insertString :: String -> O.Pos -> B.Buffer -> B.Buffer
-insertString string pos buf = let (before, after) = S.splitAt pos buf
-                                   in  before >< (S.fromList string) >< after
+-- | 'insertString' inserts a 'Text' at 'O.Pos' in a
+-- 'Text' and returns a 'Text'
+insertString :: Text -> O.Pos -> Text -> Text
+insertString string pos buf = let (before, after) = T.splitAt pos buf
+                                   in  before `append` string `append` after
 
--- | 'delete' deletes a 'O.Char' at 'O.Pos' in a 'B.Buffer'
--- and returns the modified 'B.Buffer'
-delete :: O.Pos -> B.Buffer -> B.Buffer
-delete pos buf = let (before, after) = S.splitAt pos buf
-                      in  before >< (S.drop 1 after)
+-- | 'delete' deletes a 'O.Char' at 'O.Pos' in a 'Text'
+-- and returns a 'Text'
+delete :: O.Pos -> Text -> Text
+delete pos buf = let (before, after) = T.splitAt pos buf
+                      in  before `append` (T.drop 1 after)
 
--- | 'deleteRange' deletes a 'O.Range' in a 'B.Buffer' and
--- returns the modified 'B.Buffer'
-deleteRange :: O.Range -> B.Buffer -> B.Buffer
-deleteRange (begin, end) buf = let (before, after) = S.splitAt begin buf
-                                    in  before >< (S.drop (end - begin + 1) after)
+-- | 'deleteRange' deletes a 'O.Range' in a 'Text' and
+-- returns a 'Text'
+deleteRange :: O.Range -> Text -> Text
+deleteRange (begin, end) buf = let (before, after) = T.splitAt begin buf
+                                    in  before `append` (T.drop (end - begin + 1) after)
 
--- | 'copy' copies the 'O.Char' at 'O.Pos' in the 'B.Buffer'
+-- | 'copy' copies the 'O.Char' at 'O.Pos' in the 'Text'
 -- to the 'Board' that it returns
-copy :: O.Pos -> B.Buffer -> Board
-copy pos buf = S.take 1 $ S.drop pos buf
+copy :: O.Pos -> Text -> Board
+copy pos buf = T.take 1 $ T.drop pos buf
 
 -- | 'copyRange' copies a range of 'O.Char's from the
--- 'B.Buffer' to the 'Board' that it returns
-copyRange :: O.Range -> B.Buffer -> Board
-copyRange (begin, end) buf = S.take (end - begin + 1) $ S.drop begin buf
+-- 'Text' to the 'Board' that it returns
+copyRange :: O.Range -> Text -> Board
+copyRange (begin, end) buf = T.take (end - begin + 1) $ T.drop begin buf
 
--- | 'cut' copies a 'O.Char' at 'O.Pos' from the 'B.Buffer'
--- to a 'Board' and returns a 'Tuple' of ('Buffer', 'Board')
--- containing the modified 'Buffer' and the 'Board'
-cut :: O.Pos -> B.Buffer -> (Buffer, Board)
-cut pos buf = (delete pos buf, copy pos buf)
+-- | 'cut' copies a 'O.Char' at 'O.Pos' from the 'Text'
+-- to a 'Board' and returns a 'Tuple' of ('Text', 'Board')
+-- containing the modified 'Text' and the 'Board'
+cut :: O.Pos -> Text -> (Text, Board)
+cut pos buf = (delete pos buf, Bread.Editing.Operations.copy pos buf)
 
 -- | 'cutRange' copies a range of 'O.Char' from the
--- 'B.Buffer' to a 'Board' and returns a 'Tuple' of ('Buffer',
--- 'Board') containing the modified 'Buffer' and the 'Board'
-cutRange :: O.Range -> B.Buffer -> (Buffer, Board)
+-- 'Text' to a 'Board' and returns a 'Tuple' of ('Text',
+-- 'Board') containing the modified 'Text' and the 'Board'
+cutRange :: O.Range -> Text -> (Text, Board)
 cutRange range buf = (deleteRange range buf, copyRange range buf)
