@@ -21,9 +21,12 @@ library
                      , Bread.Data.Boards
                      , Bread.Editing.TextObjects
                      , Bread.Editing.Operations
+                     , Bread.Server.Server
   
   build-depends:       base == 4.8.*
                      , text
+                     , bytestring
+                     , msgpack
                      , containers
                      , hspec
                      , network
@@ -36,6 +39,9 @@ executable bread
   build-depends:   bread
                  , base == 4.8.*
                  , network
+                 , text
+                 , bytestring
+                 , msgpack
 
   hs-source-dirs:  src
 

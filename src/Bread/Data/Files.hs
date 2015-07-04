@@ -6,7 +6,7 @@ module Bread.Data.Files
        , BufferList
        , Bread.Data.Files.readFile ) where
 
-import Data.Text
+import Data.Text as T
 import System.IO
 import Control.Monad
 
@@ -20,8 +20,8 @@ data Buffer = Buffer { contents :: Text
 readFile :: FilePath -> IO Buffer
 readFile path = do
   handle <- openFile path ReadMode
-  contents <- pack <$> hGetContents handle
-  return $ Buffer contents $ pack path
+  contents <- T.pack <$> hGetContents handle
+  return $ Buffer contents $ (Prelude.last . (T.split (=='/')). T.pack) path
   
 type BufferList = [Buffer]
 
