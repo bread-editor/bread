@@ -26,13 +26,15 @@ library
   build-depends:       base == 4.8.*
                      , text
                      , bytestring
-                     , msgpack
+                     , msgpack == 1.0.*
                      , containers
                      , hspec
                      , network
   
   hs-source-dirs:      src
   default-language:    Haskell2010
+  
+  default-extensions: OverloadedStrings, LambdaCase
 
 executable bread
   main-is:         Main.hs
@@ -41,11 +43,13 @@ executable bread
                  , network
                  , text
                  , bytestring
-                 , msgpack
+                 , msgpack == 1.0.*
 
   hs-source-dirs:  src
 
   default-language: Haskell2010
+
+  default-extensions: OverloadedStrings, LambdaCase
 
 source-repository head
   type:       git
@@ -61,10 +65,8 @@ test-suite spec
                  , bread
                  , hspec
                  , containers
-                 , msgpack
-                 , msgpack-rpc
+                 , msgpack == 1.0.*
 
   default-language:    Haskell2010
-              
-       
-  
+                                 
+  default-extensions: OverloadedStrings, LambdaCase

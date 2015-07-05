@@ -11,6 +11,6 @@ spec = do
   describe "Files" $ do
     it "loads a file correctly" $ do
       con <- B.readFile "./test/testfile.txt"
-      B.contents con `shouldBe` pack "This is a test file.\nIt contains test contents. With other things.\n"
-      B.name con `shouldBe` pack "testfile.txt"
+      B.contents con `shouldBe` "This is a test file.\nIt contains test contents. With other things.\n"
+      B.name con `shouldBe` "testfile.txt"
   

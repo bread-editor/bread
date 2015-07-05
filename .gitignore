@@ -2,3 +2,4 @@ dist/*
 !dist/doc/*
 .stack-work
 bread.tix
+.cabal-sandbox
