@@ -6,6 +6,8 @@ import Data.MessagePack as MP
 import Data.Text as T
 import Data.ByteString.Lazy as BSL
 import Data.ByteString as BS
+import System.IO
+import Bread.Server.API
 
 runServer :: Integer -> IO ()
 runServer port = withSocketsDo $ do
@@ -23,7 +25,6 @@ servLoop sock = do
 
 onConnect :: (Socket, SockAddr) -> IO ()
 onConnect (client, client_addr) = do
-  Prelude.putStrLn "Got a client"
-  bytes <- NSB.send client $ BS.concat $ BSL.toChunks $ MP.pack $ T.pack "Hello"
-  Prelude.putStrLn "Sent client a message"
-  close client
+  h <- socketToHandle client ReadWriteMode
+  hSetBuffering h LineBuffering
+  apiHandle h
