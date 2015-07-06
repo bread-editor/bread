@@ -10,3 +10,9 @@ Bread is a text-editor being written in Haskell. Essentially, Bread acts as a "s
 
 Baking Bread
 ------------
+```
+cabal configure --enable-coverage --enable-benchmarks --enable-tests -v2
+cabal sandbox init
+cabal install --dependencies-only
+cabal build
+```
