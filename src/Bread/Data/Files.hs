@@ -1,4 +1,5 @@
--- | This module describes the way Bread interprets files. It also includes any built-in functions related to file operations.
+-- | This module describes the way Bread interprets files. It also includes
+-- any built-in functions related to file operations.
 module Bread.Data.Files
        ( Buffer (..)
        , BufferList
@@ -9,7 +10,7 @@ import Data.Text as T
 import System.IO
 import Control.Monad
 import Data.MessagePack
-import Data.Map as M
+import Data.HashMap as M
 import Data.Maybe
 import Data.Vector as V
 
@@ -36,5 +37,7 @@ readFile path = do
   contents <- T.pack <$> hGetContents handle
   return $ Buffer contents
     ((Prelude.last . (T.split (=='/')). T.pack) path) $ T.pack path
-  
+
+
+-- | This type is used by Bread to keep a list of Buffers  
 type BufferList = [Buffer]

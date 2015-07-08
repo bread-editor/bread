@@ -23,6 +23,8 @@ library
                      , Bread.Editing.TextObjects
                      , Bread.Editing.Operations
                      , Bread.Server.Server
+                     , Bread.Server.API
+                     , Bread.Server.Calls
   
   build-depends:       base == 4.8.*
                      , text
@@ -32,6 +34,10 @@ library
                      , hspec
                      , network
                      , vector
+                     , hashmap
+                     , conduit
+                     , conduit-extra
+                     , mtl
   
   hs-source-dirs:      src
   default-language:    Haskell2010
@@ -47,6 +53,28 @@ executable bread
                  , bytestring
                  , msgpack == 1.0.*
                  , vector
+                 , hashmap
+                 , conduit
+                 , conduit-extra
+                 , mtl
+
+  hs-source-dirs:  src
+
+  default-language: Haskell2010
+
+  default-extensions: OverloadedStrings, LambdaCase
+
+       
+executable bread-test
+  main-is:         Main-Test.hs
+  build-depends:   bread
+                 , base == 4.8.*
+                 , network
+                 , text
+                 , bytestring
+                 , msgpack == 1.0.*
+                 , vector
+                 , hashmap
 
   hs-source-dirs:  src
 
@@ -57,7 +85,6 @@ executable bread
 source-repository head
   type:       git
   location:   https://github.com/bread-editor/bread
-                  
 
 test-suite spec
   type:            exitcode-stdio-1.0
@@ -69,6 +96,7 @@ test-suite spec
                  , hspec
                  , containers
                  , msgpack == 1.0.*
+                 , hashmap
 
   default-language:    Haskell2010
                                  
