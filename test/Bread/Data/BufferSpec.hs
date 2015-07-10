@@ -1,4 +1,5 @@
 module Bread.Data.BufferSpec (main, spec) where
+
 import Test.Hspec
 import Bread.Data.Buffer as B
 import Bread.Data.Bundle
@@ -15,7 +16,7 @@ spec = do
       con <- B.readFile "./test/testfile.txt"
       B.contents con `shouldBe` "This is a test file.\nIt contains test contents. With other things.\n"
       B.name con `shouldBe` "testfile.txt"
-      B.path con `shouldBe` "./test/testfile.txt"
+      B.path con `shouldBe` Just "./test/testfile.txt"
 
     it "bundles a Buffer" $ do
       con <- B.readFile "./test/testfile.txt"

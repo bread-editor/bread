@@ -17,19 +17,21 @@ cabal-version:       >=1.10
 
 
 library
-  exposed-modules:     Bread.Data.Buffer
-                     , Bread.Data.Boards
-                     , Bread.Data.Bundle
-                     , Bread.Editing.TextObjects
-                     , Bread.Editing.Operations
-                     , Bread.Config.Types
-                     , Bread.Config.HelpfulFunctions
-                     , Bread.Config.Default
-                     , Bread.Server
-                     , Bread.API
-                     , Bread.API.Calls
-                     , Bread.API.Calls.Fails
-                     , Bread.API.Calls.Editing
+  exposed-modules:    Bread.API
+                    , Bread.API.Calls
+                    , Bread.API.Calls.Fails
+                    , Bread.API.Calls.Editing
+                    , Bread.Config.HelpfulFunctions
+                    , Bread.Config.Default
+                    , Bread.Config.Types
+                    , Bread.Core.BufferM
+                    , Bread.Core.Editor
+                    , Bread.Data.Boards
+                    , Bread.Data.Buffer
+                    , Bread.Data.Bundle
+                    , Bread.Editing.Operations
+                    , Bread.Editing.TextObjects
+                    , Bread.Server
   
   build-depends:       base == 4.8.*
                      , text
@@ -50,6 +52,8 @@ library
   default-language:    Haskell2010
   
   default-extensions: OverloadedStrings, LambdaCase
+  
+  ghc-options: -Wall -fwarn-pointless-pragmas -fhelpful-errors -fwarn-incomplete-patterns
 
 executable bread
   main-is:         Main.hs

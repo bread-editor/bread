@@ -19,7 +19,7 @@
 -- == Success
 -- Success responses will be delivered in the following formats
 -- 
--- @ [ 1, [Results] ] @
+-- @ [ 1, [ Effects ], [ Results ] ] @
 -- 
 -- Here, results will be different depending on the API call. They will be
 -- able to be handled by MessagePack and should map to your chosen
@@ -33,6 +33,9 @@
 --
 -- This should be pretty much self-explanatory. If this is still confusing,
 -- submit a bug report.
+--
+-- = Effect Types
+-- - bMod: buffer modified
 --
 -- = Fail Codes
 -- - 0: Unknown Error

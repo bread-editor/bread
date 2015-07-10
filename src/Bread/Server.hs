@@ -17,10 +17,9 @@ runServer :: Int -> IO ()
 runServer port = runTCPServer (serverSettings port "*") serv
 
 serv :: AppData -> IO ()
-serv apd = do
-  let src  = appSource apd
-      sink = appSink apd :: Sink BS.ByteString IO ()
-    in src $$ process =$ sink
+serv apd = let src  = appSource apd
+               sink = appSink apd :: Sink BS.ByteString IO ()
+           in src $$ process =$ sink
 
 process :: Conduit BS.ByteString IO BS.ByteString
 process = do

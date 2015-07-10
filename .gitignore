@@ -2,5 +2,6 @@ dist/*
 !dist/doc/*
 .stack-work
 bread.tix
+bread-test.tix
 .cabal-sandbox
 cabal.sandbox.config
