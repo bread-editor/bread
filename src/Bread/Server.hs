@@ -1,4 +1,4 @@
-module Bread.Server.Server ( runServer ) where
+module Bread.Server ( runServer ) where
 
 import Data.Conduit.Network as CN
 import Data.Conduit as C
@@ -9,8 +9,8 @@ import Data.ByteString as BS
 import Data.HashMap as HM
 import System.IO as IO
 import Control.Monad.Trans
-import Bread.Server.API
-import Bread.Server.Calls
+import Bread.API
+import Bread.API.Calls
 import Bread.Data.Bundle
 
 runServer :: Int -> IO ()
@@ -38,7 +38,7 @@ process = do
 doRequest :: APIRequest -> CallMap -> APIResult
 doRequest req calls = let (reqName, reqArgs) = (name req, args req)
                       in  case HM.lookup reqName calls of
-                      Just call -> (method call) 1 reqArgs
+                      Just call -> (method call) (numArgs call) reqArgs
                       _         -> Fail 1 $ "Can't find call " `T.append` reqName
 
 -- servLoop :: Socket -> IO ()

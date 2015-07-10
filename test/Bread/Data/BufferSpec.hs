@@ -1,6 +1,6 @@
-module Bread.Data.FilesSpec (main, spec) where
+module Bread.Data.BufferSpec (main, spec) where
 import Test.Hspec
-import Bread.Data.Files as B
+import Bread.Data.Buffer as B
 import Bread.Data.Bundle
 import Data.Text
 import Data.MessagePack as M

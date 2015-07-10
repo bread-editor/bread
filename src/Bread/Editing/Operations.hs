@@ -10,7 +10,7 @@ module Bread.Editing.Operations
        , cut
        , cutRange) where
 
-import Bread.Data.Files as B
+import Bread.Data.Buffer as B
 import Bread.Editing.TextObjects as O
 import Bread.Data.Boards
 import Data.Text as T

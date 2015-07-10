@@ -1,9 +1,9 @@
 -- | This module describes the way Bread interprets files. It also includes
 -- any built-in functions related to file operations.
-module Bread.Data.Files
+module Bread.Data.Buffer
        ( Buffer (..)
        , BufferList
-       , Bread.Data.Files.readFile ) where
+       , Bread.Data.Buffer.readFile ) where
 
 import Bread.Data.Bundle
 import Data.Text as T

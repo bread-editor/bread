@@ -41,9 +41,9 @@
 -- - 3: Wrong Type of arguments
 -- - >100: Special
 
-module Bread.Server.API ( APIResult(..)
-                        , APICall(..)
-                        , APIRequest(..) ) where
+module Bread.API ( APIResult  (..)
+                 , APICall    (..)
+                 , APIRequest (..) ) where
 
 import Bread.Data.Bundle
 import Data.Text as T

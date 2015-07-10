@@ -7,7 +7,7 @@ import Data.Text as T
 import Data.ByteString.Lazy as BSL
 import Data.MessagePack as MP
 import Bread.Data.Bundle
-import Bread.Server.API
+import Bread.API
 
 main = withSocketsDo $ do
   sock <- socket AF_INET Stream 0
@@ -17,4 +17,5 @@ main = withSocketsDo $ do
   let testReq = Request "insert" [TextVal "a", NumVal 8]
   NSBL.sendAll sock $ MP.pack testReq
   res <- NSBL.getContents sock
+  BSL.putStrLn res
   close sock

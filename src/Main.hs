@@ -1,3 +1,3 @@
-import Bread.Server.Server
+import Bread.Server
 
 main = runServer 8585
