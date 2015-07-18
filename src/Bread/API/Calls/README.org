@@ -78,6 +78,4 @@ Using this, we can understand that "gCBName" will get the name of the current bu
 | *Get Methods* |        |           |                |                        |
 |---------------+--------+-----------+----------------+------------------------|
 | gCB           | None   | None      | Buffer Object  | get current buffer     |
-| gOptions      | None   | None      | Options Object | get Bread options      |
 | gCBCursorPos  |        |           |                | get cursor position in |
-| g             |        |           |                |                        |

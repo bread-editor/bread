@@ -14,12 +14,9 @@ data Editor = Editor { buffers :: BufferMap
                      , options :: OptionMap
                      }
 
-initEditor :: Editor
-initEditor = Editor { buffers = HM.singleton "*scratch*" buf
-                    , activeBuffer = buf
-                    , server = runServer
-                    , options = defaultOptions
-                    }
-  where buf = Buffer "" "*scratch*" Nothing
-
-data EditorM a = EditorM Editor a
+defaultEditor :: Editor
+defaultEditor = Editor { buffers = HM.singleton "*scratch*" defaultBuffer
+                       , activeBuffer = defaultBuffer
+                       , server = runServer
+                       , options = defaultOptions
+                       }

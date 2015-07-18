@@ -1,0 +1,3 @@
+* Plugin Architecture
+Plugins contained in ~/.bread/plugins/
+Bakefiles hosted in a central github repository for easy access.

@@ -4,7 +4,8 @@
 module Bread.Data.Buffer
        ( Buffer (..)
        , BufferMap
-       , Bread.Data.Buffer.readFile ) where
+       , Bread.Data.Buffer.readFile
+       , defaultBuffer ) where
 
 import Bread.Data.Bundle
 import Data.Text as T
@@ -32,6 +33,11 @@ instance MessagePack Buffer where
   fromObject obj = let (Just x) = fromObject obj :: Maybe Bundle
                    in Just $ unwrap x
 
+defaultBuffer :: Buffer
+defaultBuffer = Buffer { contents = ""
+                       , name = "*scratch*"
+                       , path = Nothing }
+
 -- | 'readFile' reads a file to a new 'Buffer'. 
 readFile :: FilePath -> IO Buffer
 readFile p = do
@@ -39,7 +45,6 @@ readFile p = do
   c <- T.pack <$> hGetContents handle
   return $ Buffer c
     ((Prelude.last . T.split (=='/') . T.pack) p) $ Just $ T.pack p
-
 
 -- | This type is used by Bread to keep a map of Buffers
 type BufferMap = HM.Map Text Buffer
