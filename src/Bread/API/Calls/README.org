@@ -1,5 +1,7 @@
 Note: this page is mainly for developers not familiar with Haskell. Developers who are familiar with Haskell may glean more information from the Haddock(umentation), but may still find this page to be useful.
 
+Another note: if you find ANYTHING on this page confusing, please submit a pull request and we'll do our best to clarify things for you and add them back to this page.
+
 * Bread API calls
 Here is a list of all available Bread API calls. They will be defined in an easy to parse table, so hopefully you can generate bindings automatically from this.
 
@@ -13,7 +15,8 @@ API Calls are all formatted in the following manner, and then MsgPack'd
 *** How API Results are formatted
 API Results are all formatted in the following manner, and then MsgPack'd
 
-**** Successful Calls 
+**** Successful Calls and Hook Actions
+This type of message is returned on each successful call that a client makes. This same message is sent when certain "hooks" are called.
 [ 1, [ String Effects ], [ Results ] ]
 The second element is a list (or array, if you'd like) of Strings which represent the effects that the call had. This is useful, since if you'd like to listen for certain effects on Bread, you can parse these when they come in.
 
@@ -23,59 +26,16 @@ The second element is a list (or array, if you'd like) of Strings which represen
 **** Failed Calls
 [ 0, Int FailCode, String ErrorMessage]
 
-** API Call Naming (Crumbs)
-Bread API calls may seem confusingly named. This list will help you understand how Bread names its calls, and allow you to quickly learn the calls.
+** API Documentation
+Here we will list all of the calls that you can make to Bread. Hopefully, this list should be easy to parse programatically, and you can automatically create bindings for your preferred language.
 
-The bits that make up the call names are called "crumbs".
+*** getCurrentBuffer
+Args: ()
+Effects: None
+Result: Object Buffer
+Object Fields: "name" "contents" "path"
 
-Crumbs that start a request are called "Prefixes".
-Crumbs that can further specify a request are called "Specifiers"
-Crumbs that represent objects are called "Objects".
-Crumbs that can be used as both a "Specifier" and an "Object" are called "Spobjects".
-
-Example:
-| Crumb       | Definition     | Associated arguments |
-|-------------+----------------+----------------------|
-| *Prefixes*  |                |                      |
-| g           | get            |                      |
-| *Spobjects* |                |                      |
-| CB          | current buffer |                      |
-| *Objects*   |                |                      |
-| Name        | object name    |                      |
-
-Using this, we can understand that "gCBName" will get the name of the current buffer. Likewise, "gCB" will get the current buffer as an object.
-
-*** Crumbs
-| *Crumb*      | *Definition*   | *Associated arguments* |
-|--------------+----------------+------------------------|
-| *Prefixes*   |                |                        |
-| g            | get            |                        |
-| i            | insert         |                        |
-| *Specifiers* |                |                        |
-| Ch           | character      | character              |
-| @            | at             | position               |
-| *Spobjects*  |                |                        |
-| B            | buffer         | buffer name            |
-| CB           | current buffer |                        |
-| *Objects*    |                |                        |
-| Name         | name           |                        |
-| Options      | options        |                        |
-| Mode         | buffer mode    |                        |
-| *Special*    |                |                        |
-| G            | global         |                        |
-
-**** Examples
- - gCBCh@: get character at position in current buffer
- - iBCh@: insert character at position in specified buffer
- - gCBName: get name of current buffer 
- - gGOptions: get global options
- - gBMode: get mode of specified buffer
-
-** API Calls
-*** Editing
-| *Call String* | *Args* | *Effects* | *Results*      | *Description*          |
-|---------------+--------+-----------+----------------+------------------------|
-| *Get Methods* |        |           |                |                        |
-|---------------+--------+-----------+----------------+------------------------|
-| gCB           | None   | None      | Buffer Object  | get current buffer     |
-| gCBCursorPos  |        |           |                | get cursor position in |
+*** getCurrentBufferContents
+Args: ()
+Effects: None
+Result: String contents
