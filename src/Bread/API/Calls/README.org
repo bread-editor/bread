@@ -1,6 +1,4 @@
-Note: this page is mainly for developers not familiar with Haskell. Developers who are familiar with Haskell may glean more information from the Haddock(umentation), but may still find this page to be useful.
-
-Another note: if you find ANYTHING on this page confusing, please submit a pull request and we'll do our best to clarify things for you and add them back to this page.
+Note: if you find ANYTHING on this page confusing, please submit a pull request and we'll do our best to clarify things for you and add them back to this page.
 
 * Bread API calls
 Here is a list of all available Bread API calls. They will be defined in an easy to parse table, so hopefully you can generate bindings automatically from this.
