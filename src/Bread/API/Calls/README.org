@@ -8,7 +8,8 @@ Here is a list of all available Bread API calls. They will be defined in an easy
 ** Information
 *** Formatting API Calls
 API Calls are all formatted in the following manner, and then MsgPack'd
-[ String CallName, [ Args ] ]
+
+~[ String CallName, [ Args ] ]~
 
 "Args" will be of varying types, but they will be defined in the table below
 
@@ -17,25 +18,32 @@ API Results are all formatted in the following manner, and then MsgPack'd
 
 **** Successful Calls and Hook Actions
 This type of message is returned on each successful call that a client makes. This same message is sent when certain "hooks" are called.
-[ 1, [ String Effects ], [ Results ] ]
+
+~[ 1, [ String Effects ], [ Results ] ]~
+
 The second element is a list (or array, if you'd like) of Strings which represent the effects that the call had. This is useful, since if you'd like to listen for certain effects on Bread, you can parse these when they come in.
 
 "Results" will be of varying types, but they will be defined below. More complex results will be formatted using JSON, and then MsgPack'd. This allows them to be easily mapped to
 "objects" if your language supports them, or be parsed if not.
 
 **** Failed Calls
-[ 0, Int FailCode, String ErrorMessage]
+~[ 0, Int FailCode, String ErrorMessage]~
 
 ** API Documentation
 Here we will list all of the calls that you can make to Bread. Hopefully, this list should be easy to parse programatically, and you can automatically create bindings for your preferred language.
 
 *** getCurrentBuffer
 Args: ()
+
 Effects: None
+
 Result: Object Buffer
+
 Object Fields: "name" "contents" "path"
 
 *** getCurrentBufferContents
 Args: ()
+
 Effects: None
+
 Result: String contents
