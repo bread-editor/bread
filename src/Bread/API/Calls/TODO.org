@@ -1,2 +1,0 @@
-* Calls to be implemented
-** Editing
