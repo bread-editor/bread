@@ -1,11 +1,9 @@
-{-# LANGUAGE TemplateHaskell #-}
 -- | This module defines the types used in configuring Bread.
 module Bread.Config.Types ( OptionMap
                           , Option (..) ) where
 
 import Data.Text as T
 import Data.HashMap as HM
-import Control.Lens
 
 -- | A `HM.Map` of option names to the associated value
 type OptionMap = HM.Map Text Option

@@ -26,11 +26,13 @@ library
                     , Bread.Config.Types
                     , Bread.Core.BufferM
                     , Bread.Core.Editor
+                    , Bread.Core.EditorM
+                    , Bread.Core.Utility.Log
+                    , Bread.Core.Operations.Basic
                     , Bread.Data.Boards
                     , Bread.Data.Buffer
                     , Bread.Data.Bundle
-                    , Bread.Editing.Operations
-                    , Bread.Editing.TextObjects
+                    , Bread.Data.Contents
                     , Bread.Server
   
   build-depends:       base == 4.8.*
@@ -69,6 +71,7 @@ executable bread
                  , conduit-extra
                  , mtl
                  , lens
+                 , hashable
 
   hs-source-dirs:  src
 

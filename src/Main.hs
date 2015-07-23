@@ -1,3 +1,4 @@
 import Bread.Server
+import qualified Bread.Core.Main
 
-main = runServer 8585
+main = Bread.Core.Main.main

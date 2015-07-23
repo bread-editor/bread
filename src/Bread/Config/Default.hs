@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 -- | Default configuration for Bread. If you'd like to configure Bread, a good way is to
 -- use defaultOptions and the update the map based on the options you'd like to configure
 module Bread.Config.Default ( defaultOptions ) where
@@ -12,11 +13,15 @@ type TOption = (Text, Option)
 -- | The default set of options for Bread
 defaultOptions :: OptionMap
 defaultOptions = oMap [ defTabOptions
+                      , defDebugOptions
                       ]
 
 -- | The default set of options with regards to using tabs or spaces
 defTabOptions :: TOption
 defTabOptions = ("tabs", MapOpt $ oMap [ ("use", BoolOpt True)
-                                               , ("tab-width", NumOpt 2)
-                                               , ("num-spaces", NumOpt 2)
-                                               ])
+                                       , ("tab-width", NumOpt 2)
+                                       , ("num-spaces", NumOpt 2)
+                                       ])
+
+defDebugOptions :: TOption
+defDebugOptions = ("debug", MapOpt $ oMap [ ("logging", BoolOpt True) ])
