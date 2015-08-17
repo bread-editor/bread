@@ -11,7 +11,5 @@ Bread is a text-editor being written in Go. Essentially, Bread acts as a "server
 Baking Bread
 ------------
 ```
-go build
-go install
-bread
+go get github.com/bread-editor/bread
 ```
