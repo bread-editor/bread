@@ -6,4 +6,4 @@ test:
     - gocov test ./... > gocov.json
     - gocov report gocov.json
   post:
-    - goveralls -gocovdata=gocov.json -service="circle-ci"
+    - goveralls -gocovdata=gocov.json -service="circle-ci" -repotoken=$COVERALLS_TOKEN
