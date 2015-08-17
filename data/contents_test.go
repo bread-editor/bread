@@ -16,9 +16,11 @@ func TestLines(t *testing.T) {
 	// Test adding lines
 	currentLine := data.EmptyLine(nil, nil)
 	firstLine := currentLine
-	for i := 0; i < 999; i++ {
+	for i := 0; i < 998; i++ {
 		currentLine = data.EmptyLine(nil, currentLine)
 	}
+
+	currentLine.InsertBefore("Hello World")
 
 	if currentLine.DistFromStart() != 999 {
 		t.Fatalf("Line distance from start is not 999")
@@ -28,8 +30,22 @@ func TestLines(t *testing.T) {
 		t.Fatalf("Line distance from end is not 0")
 	}
 
+	lastLine := currentLine
+	currentLine = currentLine.FindStart()
+
+	if currentLine.DistFromEnd() != 999 {
+		t.Fatalf("Line distance from end is not 999")
+	}
+
 	if currentLine.ListLength() != 1000 {
 		t.Fatalf("Supposed to get length of 1000, only got %d", currentLine.ListLength())
+	}
+
+	// Test Forward and Backward
+	if firstLine.Forward(100) != lastLine.Backward(lastLine.ListLength()-100-1) {
+		t.Log(firstLine.Forward(100).DistFromStart())
+		t.Log(lastLine.Backward(lastLine.ListLength() - 100).DistFromStart())
+		t.Fatalf("Forward and backward not working properly")
 	}
 
 	// Test finding the first and last lines
@@ -37,10 +53,11 @@ func TestLines(t *testing.T) {
 		t.Fatalf("First line does not match the return value of FindStart")
 	}
 
-	if currentLine.FindEnd() != currentLine {
+	if currentLine.FindEnd() != lastLine {
 		t.Fatalf("Last line does not match the return value of FindEnd")
 	}
 
+	currentLine = lastLine
 	// Test removing lines
 	for i := 0; i < 999; i++ {
 		prevLine := currentLine.Prev
