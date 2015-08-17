@@ -57,9 +57,17 @@ func TestLines(t *testing.T) {
 		t.Fatalf("Last line does not match the return value of FindEnd")
 	}
 
-	currentLine = lastLine
 	// Test removing lines
-	for i := 0; i < 999; i++ {
+	currentLine = lastLine
+
+	// Test removing line between the start and the end of the list
+	currentLine.Backward(10).Remove()
+
+	if firstLine.ListLength() != 999 {
+		t.Fatalf("List not updated properly when removing arbitrary line")
+	}
+
+	for i := 0; i < 998; i++ {
 		prevLine := currentLine.Prev
 		currentLine.Remove()
 		currentLine = prevLine
