@@ -67,7 +67,13 @@ func TestLines(t *testing.T) {
 		t.Fatalf("List not updated properly when removing arbitrary line")
 	}
 
-	for i := 0; i < 998; i++ {
+	// Test removing the head of the list
+	firstLine.Remove()
+	if currentLine.ListLength() != 998 {
+		t.Fatalf("List not updated properly when removing arbitrary line")
+	}
+
+	for i := 0; i < 997; i++ {
 		prevLine := currentLine.Prev
 		currentLine.Remove()
 		currentLine = prevLine
