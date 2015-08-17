@@ -2,8 +2,9 @@ test:
   pre:
     - go get github.com/axw/gocov/gocov
     - go get github.com/mattn/goveralls
+    - go get github.com/pierrre/gotestcover
   override:
-    - gocov test ./... > gocov.json
-    - gocov report gocov.json
+    - go test -v -race ./...
+    - gotestcover -coverprofile=cover.cov -v -race ./...
   post:
-    - goveralls -gocovdata=gocov.json -service="circle-ci" -repotoken=$COVERALLS_TOKEN
+    - goveralls -coverprofile="cover.cov" -service="circle-ci" -repotoken=$COVERALLS_TOKEN
