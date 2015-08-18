@@ -31,6 +31,7 @@ func handleRequest(conn net.Conn) {
 	_, err := conn.Read(buf)
 	if err != nil {
 		fmt.Println("Error reading", err.Error())
+		return
 	}
 	var mp codec.MsgpackHandle
 	var b []byte
@@ -40,5 +41,6 @@ func handleRequest(conn net.Conn) {
 	err = enc.Encode(buf)
 
 	conn.Write(b)
+	handleRequest(conn)
 	conn.Close()
 }
