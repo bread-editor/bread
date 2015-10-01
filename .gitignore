@@ -2,6 +2,7 @@ dist/*
 !dist/doc/*
 .stack-work
 bread
+bread.exe
 bread.tix
 bread-test.tix
 .cabal-sandbox

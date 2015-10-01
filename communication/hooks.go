@@ -1,5 +1,7 @@
 package communication
 
+import ()
+
 type Hook struct {
 	// Hook name
 	Name string
