@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/bread-editor/bread/server"
+	"github.com/bread-editor/bread/editor"
 )
 
 func main() {
-	server.Serve("tcp", "localhost", "8585")
+	editor.InitEditor()
 }
