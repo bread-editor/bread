@@ -1,4 +1,5 @@
 [![Circle CI](https://circleci.com/gh/bread-editor/bread.svg?style=svg)](https://circleci.com/gh/bread-editor/bread) [![Build Status](https://travis-ci.org/bread-editor/bread.svg?branch=master)](https://travis-ci.org/bread-editor/bread)
+[![Coverage Status](https://coveralls.io/repos/bread-editor/bread/badge.svg?branch=master&service=github)](https://coveralls.io/github/bread-editor/bread?branch=master)
 
 # Bread
 Bread is an extensible text-editor written in Go. It takes inspiration from those that came before it, namely (Neo)Vim and Emacs.
