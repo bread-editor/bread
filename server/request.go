@@ -8,16 +8,17 @@ import (
 type Request []byte
 
 func ReadFull(conn net.Conn) []byte {
-	tmp := make([]byte, 512)
-	res := make([]byte, 512)
+	buf := make([]byte, 512)
+	res := make([]byte, 0)
 
-	n, _ := conn.Read(tmp)
-	// Requests in Bread are terminated by 0xDEADDEBBEE
-	for 0 != bytes.Compare(tmp[n-5:n], []byte{0xDE, 0xAD, 0xDE, 0xBB, 0xEE}) {
-		copy(res, tmp)
-		n, _ = conn.Read(tmp)
+	n, _ := conn.Read(buf)
+
+	// Requests in Bread are terminated by 8 null bytes
+	for 0 != bytes.Compare(buf[n-8:n], []byte{0, 0, 0, 0, 0, 0, 0, 0}) {
+		res = append(res, buf[len(buf)-n:len(buf)]...)
+		n, _ = conn.Read(buf)
 	}
-	copy(res, tmp)
+	res = append(res, buf...)
 
 	return res
 }

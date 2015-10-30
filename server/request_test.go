@@ -8,8 +8,10 @@ import (
 )
 
 func TestRequests(t *testing.T) {
-	test := []byte{0x80, 0x30, 0x40, 0x50, 0x41, 0xDE, 0x84, 0xDE, 0xAD,
-		0xDE, 0xBB, 0xEE}
+	test := make([]byte, 4096)
+	for i := 0; i < 4088; i++ {
+		test[i] = 8
+	}
 
 	go func() {
 		conn, _ := net.Dial("tcp", ":8488")
@@ -24,7 +26,7 @@ func TestRequests(t *testing.T) {
 
 	res := server.ReadFull(conn)
 
-	if reflect.DeepEqual(res, test) {
+	if !reflect.DeepEqual(res, test) {
 		t.Fail()
 	}
 }
