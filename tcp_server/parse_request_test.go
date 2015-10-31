@@ -7,26 +7,41 @@ import (
 	"testing"
 )
 
-func TestRequests(t *testing.T) {
-	test := make([]byte, 4096)
-	for i := 0; i < 4088; i++ {
-		test[i] = 8
+func TestReadFull(t *testing.T) {
+	test1 := make([]byte, 893)
+	for i := 0; i < 885; i++ {
+		test1[i] = byte(i)
 	}
 
 	go func() {
-		conn, _ := net.Dial("tcp", ":8488")
+		conn, err := net.Dial("tcp", "127.0.0.1:8488")
+		if err != nil {
+			t.Fatal(err)
+		}
 		defer conn.Close()
-
-		conn.Write(test)
+		conn.Write(test1)
 	}()
 
-	l, _ := net.Listen("tcp", ":8488")
+	l, err := net.Listen("tcp", "127.0.0.1:8488")
+
+	if err != nil {
+		t.Fatal(err)
+	}
 	defer l.Close()
-	conn, _ := l.Accept()
 
-	res := server.ReadFull(conn)
+	for {
+		conn, err := l.Accept()
+		if err != nil {
+			return
+		}
+		defer conn.Close()
 
-	if !reflect.DeepEqual(res, test) {
-		t.Fail()
+		res := tcp_server.ReadFull(conn)
+		if !reflect.DeepEqual(res, test1) {
+			t.Logf("What we wanted: \n%v\n\nWhat we got: \n%v\n", test1, res)
+			t.Logf("Length expected: %d\n\nLength got: %d\n", len(test1), len(res))
+			t.Fail()
+		}
+		return
 	}
 }

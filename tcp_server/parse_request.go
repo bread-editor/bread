@@ -17,11 +17,11 @@ func ReadFull(conn net.Conn) []byte {
 	n, _ := conn.Read(buf)
 
 	// Requests in Bread are terminated by 8 null bytes
-	for 0 != bytes.Compare(buf[n-8:n], []byte{0, 0, 0, 0, 0, 0, 0, 0}) {
-		res = append(res, buf[len(buf)-n:len(buf)]...)
+	for !bytes.Equal(buf[n-8:n], []byte{0, 0, 0, 0, 0, 0, 0, 0}) {
+		res = append(res, buf[:n]...)
 		n, _ = conn.Read(buf)
 	}
-	res = append(res, buf[len(buf)-n:len(buf)]...)
+	res = append(res, buf[:n]...)
 
 	return res
 }

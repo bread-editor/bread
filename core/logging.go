@@ -16,15 +16,15 @@ const (
 func Log(l LogLevel, s string, args ...interface{}) {
 	switch l {
 	case LOG:
-		str := strings.Join([]string{"Bread LOG: ", s}, "")
-		fmt.Printf(str, args)
+		str := strings.Join([]string{"Bread LOG: ", s, "\n"}, "")
+		fmt.Printf(str, args...)
 
 	case WARNING:
-		str := strings.Join([]string{"Bread WARNING: ", s}, "")
-		fmt.Printf(str, args)
+		str := strings.Join([]string{"Bread WARNING: ", s, "\n"}, "")
+		fmt.Printf(str, args...)
 
 	case ERROR:
-		str := strings.Join([]string{"Bread ERROR: ", s}, "")
-		fmt.Printf(str, args)
+		str := strings.Join([]string{"Bread ERROR: ", s, "\n"}, "")
+		fmt.Printf(str, args...)
 	}
 }
