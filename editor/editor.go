@@ -3,7 +3,6 @@ package editor
 import (
 	"github.com/bread-editor/bread/buffer"
 	"github.com/bread-editor/bread/core"
-	"github.com/bread-editor/bread/server"
 	"github.com/bread-editor/bread/ui"
 	"github.com/bread-editor/bread/version"
 )
@@ -40,7 +39,7 @@ func InitEditor() Editor {
 	core.Log(core.LOG, "Starting Bread...")
 
 	// Start server
-	go server.Serve("tcp", "localhost", "8585")
+	//go server.Serve("tcp", "localhost", "8585")
 
 	// TODO: Load configuration
 	// Create Editor

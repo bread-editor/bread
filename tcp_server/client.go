@@ -1,4 +1,4 @@
-package server
+package tcp_server
 
 type Client struct {
 	// Did the Client send the proper initialization request?

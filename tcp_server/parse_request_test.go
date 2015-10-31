@@ -1,7 +1,7 @@
-package server_test
+package tcp_server_test
 
 import (
-	"github.com/bread-editor/bread/server"
+	"github.com/bread-editor/bread/tcp_server"
 	"net"
 	"reflect"
 	"testing"
